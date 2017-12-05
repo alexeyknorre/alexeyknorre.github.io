@@ -4,10 +4,10 @@
     <title>{&quot;ru&quot;=&gt;&quot;Алексей Кнорре&quot;, &quot;en&quot;=&gt;&quot;Alexey Knorre&quot;}</title>
     <description>Personal page of Alexey Knorre, sociologist
 </description>
-    <link>http://alexeyknorre.ru/</link>
-    <atom:link href="http://alexeyknorre.ru/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Dec 2017 18:42:42 +0300</pubDate>
-    <lastBuildDate>Tue, 05 Dec 2017 18:42:42 +0300</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 05 Dec 2017 18:54:41 +0300</pubDate>
+    <lastBuildDate>Tue, 05 Dec 2017 18:54:41 +0300</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -99,8 +99,8 @@ mainfont: FreeSans
 
 </description>
         <pubDate>Fri, 14 Apr 2017 00:00:00 +0300</pubDate>
-        <link>http://alexeyknorre.ru/2017/04/14/rmd-to-pdf-in-russian/</link>
-        <guid isPermaLink="true">http://alexeyknorre.ru/2017/04/14/rmd-to-pdf-in-russian/</guid>
+        <link>http://localhost:4000/2017/04/14/rmd-to-pdf-in-russian/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/14/rmd-to-pdf-in-russian/</guid>
         
         
       </item>
@@ -158,8 +158,8 @@ mainfont: FreeSans
 
 </description>
         <pubDate>Tue, 24 Jan 2017 00:00:00 +0300</pubDate>
-        <link>http://alexeyknorre.ru/2017/01/24/intro-to-python/</link>
-        <guid isPermaLink="true">http://alexeyknorre.ru/2017/01/24/intro-to-python/</guid>
+        <link>http://localhost:4000/2017/01/24/intro-to-python/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/24/intro-to-python/</guid>
         
         
       </item>
