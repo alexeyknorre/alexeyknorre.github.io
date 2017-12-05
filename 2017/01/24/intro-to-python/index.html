@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title> Как начать программировать на Python | Алексей Кнорре</title>
+  <meta name="description" content="Personal page of Alexey Knorre, sociologist
+">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://alexeyknorre.ru/2017/01/24/intro-to-python/">
+  <link rel="alternate" type="application/rss+xml" title="Алексей Кнорре" href="http://alexeyknorre.ru/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Алексей Кнорре</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Меню сайта</h1>
+
+ 
+
+
+
+<ul class="menu">
+
+    
+     <li><a href="/blog/" class="page-link">Блог</a>
+    </li>
+    
+     <li><a href="/research/" class="page-link">Публикации</a>
+    </li>
+    
+     <li><a href="/teaching/" class="page-link">Преподавание</a>
+    </li>
+    
+    
+      <li><a class=" ru" href="/2017/01/24/intro-to-python/">ru</a></li>
+    
+    </ul>
+
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Как начать программировать на Python</h1>
+    <p class="post-meta">
+<!-- Whitespace added for readability -->
+
+24
+января
+  
+2017
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <p><sup>Обновлённый текст, изначально опубликованный в феврале 2016 на ныне закрытом сайте Mebius.io</sup></p>
+
+<p>Сейчас почти любой профессионал в своей работе сталкивается с информационными технологиями. Особенно это проявляется в науке, потому что обработка данных для исследований всё больше происходит программно, а данных становится всё больше, и программы приходится писать даже тем учёным, которые свою работу с компьютерами никак не ассоциировали. Но даже в повседневной жизни люди всё чаще сталкиваются с разнообразными задачами, связанными с программами: упорядочить и переименовать большое количество семейных фотографий, вовремя запостить что-то в группе в социальной сети, скачать что-то в большом количестве из Интернета. Умение писать простые программы помогает потратить на ненужные операции минимум времени.</p>
+
+<p>Программирование, по <a href="http://ershov.iis.nsk.su/russian/second_literacy/article">выражению</a> советского информатика А.П. Ершова, становится второй грамотностью: во многих странах мира в школах и детских садах наряду с родным и иностранным языками начинают учить языкам программирования – в <a href="http://www.schooleducationgateway.eu/en/pub/news_events/computer_programming_and_codin.htm">Европе</a>, <a href="http://www.theguardian.com/technology/2014/sep/04/coding-school-computing-children-programming">Великобритании</a>, <a href="http://billshorten.com.au/labors-plan-for-coding-in-schools">Австралии</a> и <a href="https://code.org/">США</a>. В таких условиях изучение программирования становится хорошим способом как увеличить свои зарплатные ожидания, так и упростить себе жизнь тогда, когда приходится делать много рутинных операций на компьютере. А еще программирование — это очень весело.</p>
+<h2 id="Почему-python">Почему Python?</h2>
+<p>Один из наиболее подходящих вариантов пойти таким путём — начать изучать язык программирования <a href="https://ru.wikipedia.org/wiki/Python">Python</a>. 
+Во-первых, новичку довольно просто понять основные идеи и сразу начать писать простые программы, а сам код, написанный на Python, довольно просто читается. 
+Во-вторых, у этого языка очень большое сообщество пользователей, так что почти любая ошибка, с которой вы можете столкнуться, уже была не раз кем-то встречена и решена, и это решение легко найти в Интернете. Помимо этого, у Python огромное количество сторонних модулей, позволяющих решать разнообразные задачи — от <a href="http://www.pygame.org/news.html">создания игрушек</a> и <a href="https://github.com/python-pillow/Pillow">обработки изображений</a> до <a href="https://twistedmatrix.com/trac/">разработки Веб-приложений</a> и <a href="http://scrapy.org/">парсинга сайтов</a>.</p>
+
+<p style="text-align: center;"><img src="http://xkcd.ru/i/353_v1.png" alt="Python в представлении художника" /></p>
+
+<p>В-третьих, Python является полноценным языком программирования во многих сферах ИТ, используется для разработки сайтов и может стать полноценным мостиком к карьере программиста.
+Допустим, вы убедились, что можно попробовать изучать Python, но нужно предупредить, что есть несколько требований.</p>
+<ol>
+  <li>Нужно много читать по-английски. Большинство обучающих материалов и документации, связанных с программированием, написаны на английском. К счастью, для многих людей, которые это писали, английский не был родным, поэтому написано всё понятно и довольно просто. Тем не менее, нужно не бояться читать по-английски и понимать, как применить то, что описано.</li>
+  <li>Изучение языка программирования — как изучение иностранного языка: должна быть регулярность занятий, готовность работать над своими ошибками и отсутствие боязни начинать с нуля. Нельзя свободно говорить по-испански, выучив 100 слов и основные грамматические конструкции, нужно много практики. Также и с языком программирования.</li>
+  <li>Программирование должно приносить удовольствие. Программа, которая, наконец, заработала, приносит большое удовлетворение, а процесс её написания — радость. Это похоже на решение задачек на математике в школе, когда этот предмет еще не стал совсем скучным.</li>
+</ol>
+
+<h2 id="На-старт">На старт</h2>
+
+<p>Окей, с чего начать? Прежде всего, нужно установить Python себе на компьютер, поскольку в большинстве обучающих материалов, которые мы рассмотрим дальше, нужно выполнять код на своём компьютере.</p>
+
+<p>Хотя чаще всего пишут, что нужно зайти на официальный сайт Python и скачать там заветный exe-файл со средой для работы Python, но так делать не стоит. Стандартная и чистая (на жаргоне – «vanilla») среда Python страдает от нескольких проблем: необходимости вручную задавать переменную PATH в Windows, отсутствия встроенного менеджера пакетов и не самой удобной стандартной среды для разработки. Это всё решается использованием пакета <a href="https://www.continuum.io/downloads">Anaconda</a>, в котором все проблемы уже решены и «всё включено».</p>
+
+<p>Этот же пакет решает вопрос того, в чём писать код на своём компьютере. Самый примитивный вариант — использовать обычный Блокнот, но так делать не стоит. Для удобной и комфортной работы с кодом существуют так называемые интегрированные среды разработки, они же Integrated Development Environment (IDE). Это обычные программы вроде Блокнота, но специально заточенные под программирование. Они умеют помечать синтаксические ошибки и вообще делают написание кода гораздо удобнее. В пакет Anaconda уже включена среда <a href="https://github.com/spyder-ide/spyder#spyder---the-scientific-python-development-environment">Spyder</a>, которой вполне хватает для первых нескольких недель или месяцев программирования. После неё можно попробовать перейти на профессиональный <a href="https://ru.wikipedia.org/wiki/PyCharm">PyCharm</a>.</p>
+
+<p>Отдельный вопрос — выбор версии Python. В 2008 году была выпущена третья версия Python, несовместимая с предыдущим, вторым поколением. Мгновенного перехода не произошло, поскольку к тому времени было написано уже столько программ на Python 2.*, что это фактически привело к расколу внутри сообщества. Теперь есть два очень похожих, но не до конца совместимых друг с другом языка — Python 2 и Python 3. Многие модули и ИТ-продукты до сих пор не портированы на третью версию, но, по всей видимости, именно Python 3 становится более распространённой и фактически стандартной версией Python, которая, к тому же, более совершенна (самое очевидное – третий Пайтон гораздо удобнее при работе с кодировками, более развернуто о различиях между ними можно прочитать <a href="https://python-3-for-scientists.readthedocs.io/en/latest/python3_user_features.html">здесь</a>). Короче, Python 3 лучше.</p>
+
+<p>Теперь можно приступить к обучению. Прежде всего, необходимо введение в основные идеи программирования на Python. Это можно сделать тремя путями: во-первых, читая статьи и книжки, во-вторых, проходя интерактивные учебники с короткими видео, в-третьих, проходя образовательные онлайн-курсы.</p>
+
+<p>Лучше попробовать всё, но начать стоит с интерактивных учебников — они позволяют быстро закрепить основные навыки и не надоедают сразу — с <a href="https://www.codecademy.com/learn/python">Codeacademy</a> (кажется, это была самая важная ссылка в этой статье, обязательно перейдите по ней) и русскоязычного <a href="http://pythontutor.ru/">PythonTutor</a>. Кроме этого, можно пройти образовательный онлайн-курс по Python на <a href="https://stepic.org/course/Программирование-на-Python-67">Stepic</a> (его достоинство в том, что он на русском языке) и англоязычные <a href="https://ru.coursera.org/learn/python">Coursera</a> или <a href="https://www.udacity.com/course/programming-foundations-with-python--ud036">Udacity</a>. Можно почитать неплохие русскоязычные учебники <a href="http://younglinux.info/sites/default/files/python_structured_programming.pdf">«Основы программирования на Python»</a> или <a href="http://wombat.org.ua/AByteOfPython/AByteofPythonRussian-2.01.pdf">«Укус Питона»</a>, но не стоит их зубрить: лучше в процессе обучения и решения конкретных задачек обращаться к отдельным главам, иначе может быстро стать скучно.</p>
+
+<p>Отдельный и, пожалуй, остающийся важным даже в жизни опытных разработчиков ресурс для обучения — статьи в Интернете. Настоящей кладезью мудрости является вот <a href="https://habrahabr.ru/post/205944/">эта</a> подборка статей про Python в коллективном блоге Хабрахабр.</p>
+
+<p>В процессе написания кода всегда появляются проблемы и вопросы. Исследования <a href="http://habrahabr.ru/post/182034/">показывают</a>, что даже профессионалы чаще обращаются не к официальной документации, а к специализированным вопросно-ответным системам, на которых одни люди задают вопросы, а другие - на них отвечают, прежде всего — к <a href="http://ru.stackoverflow.com/">StackOverflow</a>. Поиск существующего решения для программиста — один из важнейших навыков, поэтому в большинстве, при возникновении какой-то заминки, стоит ввести поисковый запрос на английском языке в Google. Например, такой: <a href="https://www.google.ru/search?q=list+iterator+python">“list iterator python”</a>.</p>
+
+<h2 id="Что-делать-дальше">Что делать дальше?</h2>
+<iframe width="840" height="630" src="http://www.youtube.com/embed/HdghNESbPOk" frameborder="0" allowfullscreen=""></iframe>
+<p style="text-align: center;"><sup>17-летний юноша за 48 часов, ускоренных до нескольких минут, создаёт свою игрушку</sup></p>
+
+<p>Что делать после того, как вы написали пару своих первых программ, прошли несколько курсов и готовы приступить к чему-нибудь серьёзному?</p>
+<ol>
+  <li>Не останавливаться и писать код хотя бы по 15 минут в день. Одно из самых важных правил при освоении программирования (как и иностранного языка) - <a href="http://habrahabr.ru/post/186002/">«Не переставай программировать»</a>.</li>
+  <li>Поставить себе интересную, но выполнимую задачу: написать игрушку вроде крестиков-ноликов, или перевести всё расчёты для диплома из Stata или SPSS в Python. Можно заниматься проектами, которые помогут другим людям: открытым программным обеспечением или задачами по извлечению и анализу данных (например, для <a href="https://github.com/infoculture/datatasks/issues">Инфокультуры</a>).</li>
+  <li>Освоить <a href="https://ru.wikipedia.org/wiki/Git">Git</a>, сделать профиль на <a href="https://github.com/">Github</a>, выложить туда немного своего кода и <a href="http://hh.ru/search/vacancy?text=python">устроиться на стажировку или работу</a>.</li>
+</ol>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'alexeyknorre';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <!--<div style="position: relative">    
+
+    <div style="position: absolute; bottom: 5px; background-color: green">
+    TEST (C) 2010
+    </div>
+</div>
+-->
+			<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter30924051 = new Ya.Metrika({id:30924051,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/30924051" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  </body>
+</html>
+
+

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title> RMarkdown и PDF по-русски | Алексей Кнорре</title>
+  <meta name="description" content="Personal page of Alexey Knorre, sociologist
+">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://alexeyknorre.ru/2017/04/14/rmd-to-pdf-in-russian/">
+  <link rel="alternate" type="application/rss+xml" title="Алексей Кнорре" href="http://alexeyknorre.ru/feed.xml" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.2.4' type='text/css' media='all' />
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600italic,600,400,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Алексей Кнорре</a>
+
+
+    <nav class="site-nav">
+
+      <a href="#" class="menu-icon menu.open">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>  
+
+    <div class="trigger"><h1>Меню сайта</h1>
+
+ 
+
+
+
+<ul class="menu">
+
+    
+     <li><a href="/blog/" class="page-link">Блог</a>
+    </li>
+    
+     <li><a href="/research/" class="page-link">Публикации</a>
+    </li>
+    
+     <li><a href="/teaching/" class="page-link">Преподавание</a>
+    </li>
+    
+    
+      <li><a class=" ru" href="/2017/04/14/rmd-to-pdf-in-russian/">ru</a></li>
+    
+    </ul>
+
+
+     </div>  
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">RMarkdown и PDF по-русски</h1>
+    <p class="post-meta">
+<!-- Whitespace added for readability -->
+
+14
+апреля
+  
+2017
+
+</p>
+  </header>
+
+  <article class="post-content">
+    <h3 id="Кул-стори">Кул стори</h3>
+
+<p>Как-то раз пару месяцев назад мне нужно было выступать на конференции и для этого нужно было сделать презентацию. Обычно я делал презентации в Powerpoint - это быстро, но грязно и неспортивно. Я давно слышал про LaTeX и стандартный шаблон для презентаций Beamer, который, во-первых, сразу выдаёт вас за продвинутого пользователя, во-вторых, красиво и ровно всё форматирует. На конференции нужно было выступать с несколькими графиками и табличками, которые я посчитал в RStudio. Дай-ка, думаю я, сделаю финт ушами: запилю красивую презенташку в Beamer, но сделаю это в RStudio через RMarkdown/knitr.<br />
+RStudio - мощная среда не только для работы с данными в R, но и с кучей плюшек, таких, как подключение системы контроля версий (git), создание интерактивных приложений Shiny и вёрстка документов в RMarkdown с конвертацией в HTML, PDF и Word.</p>
+
+<p><img src="/assets/posts/rmd-to-pdf-in-russian/rmd_1.png" alt="Опции вывода RMarkdown в rStudio" /></p>
+
+<p>Именно вёрстка и конвертация позволяет создавать максимально воспроизводимые исследования. В чём разница с традиционным подходом? Традиционно мы генерируем таблицы и графики после выполнения кода и вручную вставляем в текст отчёта или статьи, а иногда делаем всё вообще без кода и строим таблички и картинки в Excel. Сам текст обычно пишется в Word.   Почему это плохо: во-первых, если с момента генерации картинок и табличек что-то изменилось в данных, то их снова нужно копировать и вставлять в вордовский документ. Результаты при этом могут измениться, а мы этого не заметим и допустим ошибку.   Во-вторых, гораздо больше ручной работы: нужно сначала выполнить код, который сохранит таблички и картинки, потом их нужно вручную вставить в текст и что-то переписать в тексте. Что же является альтернативой? RMarkdown в RStudio.<br />
+RMarkdown - это подмножество языка разметки Markdown. В RStudio он позволяет писать единый документ, в котором есть и обычный текст, и куски кода (которые выполняются и становятся табличками, графиками и чем угодно), и сами данные, которые подгружаются и обрабатываются в коде. Выглядит это так:</p>
+
+<p><img src="/assets/posts/rmd-to-pdf-in-russian/rmd_2.png" alt="Rmd in RStudio" /></p>
+
+<p>Звучит интересно, правда? RStudio позволяет конвертировать наш RMarkdown в PDF, HTML и Word. Кроме того, можно создавать презентации в HTML или PDF (используя встроенный шаблон Beamer, используя тот же самый RMarkdown. PDF при этом создаётся после промежуточного перевода RMarkdown в LaTeX, который затем конвертируется в PDF. С этими мыслями начал делать презентацию в RStudio для перевода в PDF и сразу расстроился:</p>
+
+<p><img src="/assets/posts/rmd-to-pdf-in-russian/rmd_3.png" alt="Beamer fail" /></p>
+
+<p>При это конвертация презенташки в HTML работает из коробки. Для этого в RStudio используется два пакета - ioslides и Slidy (Slidy лучше форматирует, не ограничивает слайд одним размером экрана и в целом чище).<br />
+Окей, подумал я, интересно, а что будет, если я захочу сделать статью в PDF? Сработает ли всё из коробки?</p>
+
+<p><img src="/assets/posts/rmd-to-pdf-in-russian/rmd_4.png" alt="PDF document fail" /></p>
+
+<p>Что происходит? Нужно немного рассказать про то, как вообще получается PDF из RMarkdown.</p>
+
+<h2 id="rmd-convertion-pipeline-в-rstudio">Rmd convertion pipeline в RStudio</h2>
+
+<p><img src="/assets/posts/rmd-to-pdf-in-russian/rmd_5.png" alt="Rmd convertion pipeline" /></p>
+
+<p>На первом этапе knitr анализирует .Rmd и выполняет куски кода (chunks), в результате чего получается .md-документ c приложениями вроде картинок. После этого он уходит в pandoc и там конвертируется в HTML, DOCX или PDF в зависимости от выбора, и для любого варианта используются шаблоны. В HTML и Word конвертация происходит напрямую, а для PDF промежуточным этапом является TeX-документ. TeX-документ затем конвертируется с помощью одного из движков: по умолчанию, pdflatex, но можно переключить на xelatex или что-то еще.</p>
+
+<p>Поломка происходит на этапе конвертации в PDF, когда конвертер подбирает TeX-файл, и связана она с кириллицей/Юникодом. Полное и пошаговое решение можно увидеть в конце текста, сейчас я пошагово опишу, что и где отваливается. Давайте посмотрим на шаблон теховского документа, который показан в логе:</p>
+
+<p><img src="/assets/posts/rmd-to-pdf-in-russian/rmd_6.png" alt="Типичный TeX-шаблон для RStudio" /></p>
+
+<p>Опытным путём выяснилось, что проблема в подгружаемой для теха библиотеке шрифтов. Нужно просто дописать, чтобы загружал известный в русскоязычной TeX-среде babel:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\usepackage[russian]{babel}
+</code></pre></div></div>
+
+<p>Для Beamer шаблон в директории rmarkdown не найти, поскольку он встроен в сам Pandoc. Но можно написать в заголовке Rmd-документа опцию для принудительного включения библиотеки babel для русского языка:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: "Мастер-класс по анализу данных решений арбитражных судов в R"
+author: "Алексей Кнорре"
+date: "4 марта 2017"
+output:
+  beamer_presentation
+header-includes:
+   - \usepackage[russian]{babel}
+---
+</code></pre></div></div>
+
+<p>И это же работает для обычного Rmd документа, без правки TeX-шаблона. После этого Rmd-документы с русским языком (и документы, и презентации Beamer) спокойно конвертируются.</p>
+
+<p>Важно не забыть, что babel должен быть установлен. Для этого нужно установить дистрибутив всего для TeX’а MiKTeX или TeXLive (весят несколько гигабайт, хотя для MiKTeX можно выбрать только отдельные библиотеки для установки).</p>
+
+<p>Я попробовал воспроизвести всё то же самое в Ubuntu. Там возникают такие же проблемы, которые лечатся точно так же. Для Ubuntu есть альтернативный способ: не править шаблоны, а использовать другой движок для перевода TeX в PDF - xelatex. Для этого нужно установить TeXLive через менеджер пакетов, а потом прописать опцию в заголовке Rmd файла:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: "Хвалёный UTF-8"
+author: "Алексей"
+date: "April 14, 2017"
+output:
+  pdf_document:
+    latex_engine: xelatex
+mainfont: FreeSans
+---
+</code></pre></div></div>
+
+<p>Важно, чтобы был указан основной шрифт. Их много, но они довольно малоизвестные. Чтобы увидеть список доступных в Ubuntu шрифтов для TeX2PDF конверсии, можно в терминале ввести:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fc-list :outline -f "%{family}\n"
+</code></pre></div></div>
+
+<p><a href="https://tex.stackexchange.com/questions/12881/how-to-get-a-list-of-all-available-ttf-fonts-with-xetex">Источник на SO</a></p>
+
+<h2 id="Готовые-rmdtex-шаблоны-для-pdf-статья-диссертация-презентация-cv">Готовые Rmd/TeX шаблоны для PDF: статья, диссертация, презентация, CV</h2>
+
+<p>Вёрстка в LaTeX или RMarkdown лучше, чем вёрстка в Word. Однако код в LaTeX тяжело читать по сравнению с Rmd. Кроме того, для Rmd документов можно использовать пользовательские шаблоны, просто их нужно указывать в заголовке Rmd файла. Я попробовал адаптировать готовые шаблоны, которые <a href="https://github.com/svmiller/svm-r-markdown-templates">разработал</a> Стивен Миллер из Clemson University, которые позволяют напрямую из RStudio создавать PDF для академических презентаций, статей, диссертаций и резюме. Я немного поправил ссылки и добавил импорт библиотеки babel, что позволяет склонировать репозиторий и сразу же ими пользоваться без починки TeX-шаблонов, форк репозитория, готовый для работы с русским языком, <a href="https://github.com/alexeyknorre/svm-r-markdown-templates">здесь</a>.</p>
+
+<h2 id="Немного-ссылок">Немного ссылок:</h2>
+
+<p><a href="http://qa.piterdata.ninja/p/1742/">Rmd to PDF in Linux</a></p>
+
+<p><a href="https://github.com/rstudio/rticles">Больше стандартных шаблонов для Rmd</a></p>
+
+<p><a href="https://yihui.name/knitr/demo/showcase/">Примеры работы с knitr</a></p>
+
+
+  </article>
+
+<div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'alexeyknorre';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+
+    <!--<div style="position: relative">    
+
+    <div style="position: absolute; bottom: 5px; background-color: green">
+    TEST (C) 2010
+    </div>
+</div>
+-->
+			<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter30924051 = new Ya.Metrika({id:30924051,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/30924051" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  </body>
+</html>
+
+
