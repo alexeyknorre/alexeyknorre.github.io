@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Web scraping с помощью R</title>
+  <meta name="description" content="Брошюра о том, как выкачивать сайты с помощью R">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Web scraping с помощью R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Брошюра о том, как выкачивать сайты с помощью R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Web scraping с помощью R" />
+  
+  <meta name="twitter:description" content="Брошюра о том, как выкачивать сайты с помощью R" />
+  
+
+<meta name="author" content="Алексей Кнорре">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="easy-way-rvest.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Web scraping при помощи R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#-----"><i class="fa fa-check"></i><b>1.1</b> Что это и о чём это?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#web-scraping"><i class="fa fa-check"></i><b>1.2</b> Web scraping?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#----"><i class="fa fa-check"></i><b>1.3</b> Окей, может приступим к делу?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html"><i class="fa fa-check"></i><b>2</b> Easy way: rvest</a><ul>
+<li class="chapter" data-level="2.1" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#---html"><i class="fa fa-check"></i><b>2.1</b> Структура сайтов и HTML</a></li>
+<li class="chapter" data-level="2.2" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#xpath--css-----"><i class="fa fa-check"></i><b>2.2</b> XPath и CSS селекторы: пробиваем путь к данным</a></li>
+<li class="chapter" data-level="2.3" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#rvest"><i class="fa fa-check"></i><b>2.3</b> Rvest</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html"><i class="fa fa-check"></i><b>3</b> Heavy way: httr+jsonlite</a><ul>
+<li class="chapter" data-level="3.1" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#bus.gov.ru-----"><i class="fa fa-check"></i><b>3.1</b> bus.gov.ru и задачка для выгрузки данных</a></li>
+<li class="chapter" data-level="3.2" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#-json"><i class="fa fa-check"></i><b>3.2</b> Отлов JSON’ов</a></li>
+<li class="chapter" data-level="3.3" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#httr---"><i class="fa fa-check"></i><b>3.3</b> httr и отправка запросов</a></li>
+<li class="chapter" data-level="3.4" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#--"><i class="fa fa-check"></i><b>3.4</b> Цикл с запросами</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html"><i class="fa fa-check"></i><b>4</b> Slow way: RSelenium</a><ul>
+<li class="chapter" data-level="4.1" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html#nba-predictions"><i class="fa fa-check"></i><b>4.1</b> 5-38 NBA predictions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Сделано в bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Web scraping с помощью R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Web scraping с помощью R</h1>
+<h4 class="author"><em><a href="https://alexeyknorre.ru">Алексей Кнорре</a></em></h4>
+<h4 class="date"><em>7 января 2018, первая версия</em></h4>
+</div>
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Часть 1</span> Intro</h1>
+<div id="-----" class="section level2">
+<h2><span class="header-section-number">1.1</span> Что это и о чём это?</h2>
+<p>Этот букдаун (bookdown – <a href="https://bookdown.org/yihui/bookdown/">библиотека</a> для создания таких как-бы-книг) – конспект мини-курса по автоматической выгрузке данных с сайтов (web scraping) с помощью экосистемы <strong>R</strong>, подготовленный к Зимней школе по анализу данных-2018. В этом конспекте я пишу про несколько способов выгрузки данных с сайтов, которые в целом называются скрэпинг (иногда парсинг, еще реже – веб майнинг).</p>
+</div>
+<div id="web-scraping" class="section level2">
+<h2><span class="header-section-number">1.2</span> Web scraping?</h2>
+<p>Web scraping – это практика автоматического сбора данных с сайтов в случаях, когда данные недоступны в готовом виде (например, в виде CSV, XML или API), и приходится парсить сайт.<br />
+Веб скрэпинг – довольно грязное дело по нескольким причинам.<br />
+Во-первых, любой код для скрэпинга очень сильно заточен под имеющуюся задачу: структуру сайта и данных, поэтому каждый новый сайт – это всегда новое приключение по поиску данных под нагромождением каскадных таблиц стилей, тегов и прочего HTML-спагетти. Поэтому необходимо иметь хотя бы базовые знания того, как устроен HTML и CSS, поскольку вы с неизбежностью будете копаться в исходном коде веб-страниц.<br />
+Во-вторых, зачастую данные сложно получить именно из-за того, что создатели не хотят, чтобы их получали по разным причинам. Важно (особенно если вы занимаетесь коммерческой и научной разработкой) читать соглашения по использованию сайта (terms of use): часто там пишется о том, что сбор данных с сайта запрещен.<br />
+В-третьих, сама работа по извлечению данных построена на методе постоянных проб и ошибок (trial and error): где-то будут возникать ошибки, где-то отваливаться сокет, а где-то сайт будет банить вас за слишком большое количество обращений. Поэтому скрэпинг может быть нервным делом, требующим настойчивости и выдержки.<br />
+Поэтому всегда лучше попробовать получить данные напрямую либо от создателей сайта, либо от поставщиков данных. К скрэпингу прибегают тогда, когда больше ничего не остаётся.<br />
+Но есть и положительная сторона: как и с написанием кода в целом, нет лучше чувства, чем чувство работающего как надо кода.</p>
+</div>
+<div id="----" class="section level2">
+<h2><span class="header-section-number">1.3</span> Окей, может приступим к делу?</h2>
+<p>Я немного занимался скрэпингом и для себя выделяю три основных пути скрэпинга с восходящей сложностью. Каждый путь описан и разобран на примере в соответствующих частях букдауна.</p>
+<ul>
+<li>Простой путь: статичный HTML и библиотека rvest.<br />
+</li>
+<li>Сложный путь: динамический HTML (AJAX, JSON), библиотеки httr+jsonlite и инструменты для отслеживания заголовков в браузерах.<br />
+</li>
+<li>Долгий путь: автоматизация поведения пользователя в браузере и (R)Selenium.</li>
+</ul>
+<p>Всё, что будет дальше, написано для экосистемы <strong>R</strong>. Для работы нужно иметь свежие и установленные <a href="https://www.r-project.org/">R</a> и <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a>. Установите следующие библиотеки: <code>install.packages(c(&quot;rvest&quot;,&quot;httr&quot;,&quot;RSelenium&quot;,&quot;jsonlite&quot;))</code></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="easy-way-rvest.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "night",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

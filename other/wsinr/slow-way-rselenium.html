@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Web scraping с помощью R</title>
+  <meta name="description" content="Брошюра о том, как выкачивать сайты с помощью R">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Web scraping с помощью R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Брошюра о том, как выкачивать сайты с помощью R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Web scraping с помощью R" />
+  
+  <meta name="twitter:description" content="Брошюра о том, как выкачивать сайты с помощью R" />
+  
+
+<meta name="author" content="Алексей Кнорре">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="heavy-way-httrjsonlite.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Web scraping при помощи R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#-----"><i class="fa fa-check"></i><b>1.1</b> Что это и о чём это?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#web-scraping"><i class="fa fa-check"></i><b>1.2</b> Web scraping?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#----"><i class="fa fa-check"></i><b>1.3</b> Окей, может приступим к делу?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html"><i class="fa fa-check"></i><b>2</b> Easy way: rvest</a><ul>
+<li class="chapter" data-level="2.1" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#---html"><i class="fa fa-check"></i><b>2.1</b> Структура сайтов и HTML</a></li>
+<li class="chapter" data-level="2.2" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#xpath--css-----"><i class="fa fa-check"></i><b>2.2</b> XPath и CSS селекторы: пробиваем путь к данным</a></li>
+<li class="chapter" data-level="2.3" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#rvest"><i class="fa fa-check"></i><b>2.3</b> Rvest</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html"><i class="fa fa-check"></i><b>3</b> Heavy way: httr+jsonlite</a><ul>
+<li class="chapter" data-level="3.1" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#bus.gov.ru-----"><i class="fa fa-check"></i><b>3.1</b> bus.gov.ru и задачка для выгрузки данных</a></li>
+<li class="chapter" data-level="3.2" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#-json"><i class="fa fa-check"></i><b>3.2</b> Отлов JSON’ов</a></li>
+<li class="chapter" data-level="3.3" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#httr---"><i class="fa fa-check"></i><b>3.3</b> httr и отправка запросов</a></li>
+<li class="chapter" data-level="3.4" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#--"><i class="fa fa-check"></i><b>3.4</b> Цикл с запросами</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html"><i class="fa fa-check"></i><b>4</b> Slow way: RSelenium</a><ul>
+<li class="chapter" data-level="4.1" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html#nba-predictions"><i class="fa fa-check"></i><b>4.1</b> 5-38 NBA predictions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Сделано в bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Web scraping с помощью R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="slow-way-rselenium" class="section level1">
+<h1><span class="header-section-number">Часть 4</span> Slow way: RSelenium</h1>
+<p>Бывают ситуации, когда разобраться в том, что “под капотом” веб-страницы не хватает времени или навыка, а данные надо скачать как можно скорее. В таких случаях спасает <code>Selenium</code> – ПО, изначально придуманное для автоматизированного тестирования веб-приложений. Селениум позволяет автоматизировать то, что пользователь делает мышкой и клавиатурой на сайте: нажатия на те или иные кнопки, ввод текста в формы, паузы, и так далее. При этом в любой момент мы можем сохранить то, что видим на экране, в форме HTML-файла, и работать с ним дальше средствами <code>rvest</code>.</p>
+<div id="nba-predictions" class="section level2">
+<h2><span class="header-section-number">4.1</span> 5-38 NBA predictions</h2>
+<p>На сайте fivethirtyeight.com есть <a href="https://projects.fivethirtyeight.com/2017-nba-predictions/">раздел</a>, посвященный прогнозам баскетбольных матчей. Однажды <a href="https://stackoverflow.com/questions/45321744/web-scrapping-in-r/45327824#45327824">на StackOverflow</a> пожаловались на то, что <code>rvest</code> ничего не грузит, а надо скачать прогнозы за 14 апреля. У меня получилось это сделать с помощью RSelenium, и я сейчас расскажу как.</p>
+<p>Нужно выцепить эту табличку: <img src="pics/3_so.png" width="1075" /></p>
+<p>Для этого расчехляем RSelenium. После загрузки библиотек и создания переменной с URL инициализируем сам движок, который будет эмулировать браузер. Для этого нужно выбрать браузер: можно использовать известные Chrome, Firefox и другие, а можно использовать браузерозаменитель phantom.js (это как будто компьютер без монитора).</p>
+<p>Некоторое время Селениум будет подгружать браузерный движок, а потом запустит окошко.</p>
+<p><img src="pics/3_so.png" width="1075" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RSelenium)
+<span class="kw">library</span>(rvest)
+
+url_nba &lt;-<span class="st"> &quot;https://projects.fivethirtyeight.com/2017-nba-predictions/&quot;</span>
+
+<span class="co"># Заводим движок!</span>
+rD &lt;-<span class="st"> </span><span class="kw">rsDriver</span>(<span class="dt">port=</span>4444L,<span class="dt">browser=</span><span class="st">&quot;firefox&quot;</span>)
+remDr &lt;-<span class="st"> </span>rD<span class="op">$</span>client
+
+<span class="co"># Переходим на нашу страницу</span>
+remDr<span class="op">$</span><span class="kw">navigate</span>(url_nba)
+
+<span class="kw">message</span>(<span class="st">&quot;NAVIGATE&quot;</span>)
+
+<span class="co"># Нажимаем на бокс и находим десятую опцию (April 14 before playoffs)</span>
+<span class="co"># XPath был найдет с помощью всё того же просмотрщика исходного кода</span>
+webElem &lt;-<span class="st"> </span>remDr<span class="op">$</span><span class="kw">findElement</span>(<span class="dt">using =</span> <span class="st">&#39;xpath&#39;</span>, <span class="dt">value =</span> <span class="st">&quot;//*[@id=&#39;forecast-selector&#39;]/div[2]/select/option[10]&quot;</span>)
+
+<span class="kw">message</span>(<span class="st">&quot;webelem&quot;</span>)
+<span class="co"># Говорим браузеру - нажми на это.</span>
+webElem<span class="op">$</span><span class="kw">clickElement</span>()
+<span class="kw">message</span>(<span class="st">&quot;click&quot;</span>)
+
+<span class="co"># После нажатия сохраняем код страницы.</span>
+webpage &lt;-<span class="st"> </span>remDr<span class="op">$</span><span class="kw">getPageSource</span>()[[<span class="dv">1</span>]]
+
+<span class="co"># Закрываем браузер и останавливаем RSelenium</span>
+remDr<span class="op">$</span><span class="kw">close</span>()
+rD[[<span class="st">&quot;server&quot;</span>]]<span class="op">$</span><span class="kw">stop</span>() 
+
+<span class="co"># Теперь передаём наше хозяйство в rvest и извлекаем таблицу</span>
+webpage_nba &lt;-<span class="st"> </span><span class="kw">read_html</span>(webpage) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">html_table</span>(<span class="dt">fill =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># rvest извлёк три разные таблицы из страницы. Нам нужна последняя:</span>
+df &lt;-<span class="st"> </span>webpage_nba[[<span class="dv">3</span>]]
+
+<span class="co"># Приводим датафрейм в порядок</span>
+<span class="kw">names</span>(df) &lt;-<span class="st"> </span>df[<span class="dv">3</span>,]
+df &lt;-<span class="st"> </span><span class="kw">tail</span>(df,<span class="op">-</span><span class="dv">3</span>)
+df &lt;-<span class="st"> </span><span class="kw">head</span>(df,<span class="op">-</span><span class="dv">4</span>)
+df &lt;-<span class="st"> </span>df[ , <span class="op">-</span><span class="kw">which</span>(<span class="kw">names</span>(df) <span class="op">==</span><span class="st"> &quot;NA&quot;</span>)]
+df</code></pre></div>
+<pre><code>##     ELO Carm-ELO 1-Week Change          Team Conf. Conf. Semis Conf. Finals Finals Win Title
+## 4  1770     1792           -14      Warriors  West         94%          79%    66%       59%
+## 5  1661     1660           -43         Spurs  West         90%          62%    15%       11%
+## 6  1600     1603           +33       Raptors  East         77%          47%    25%        5%
+## 7  1636     1640           +33      Clippers  West         58%          11%     7%        5%
+## 8  1587     1589           -22       Celtics  East         70%          42%    24%        4%
+## 9  1587     1584            -9       Wizards  East         79%          38%    21%        4%
+## 10 1617     1609           +16          Jazz  West         42%           7%     5%        3%
+## 11 1602     1606           -18       Rockets  West         70%          27%     5%        3%
+## 12 1545     1541           -22     Cavaliers  East         59%          27%    11%        2%
+## 13 1519     1523           +25         Bulls  East         30%          15%     7%       &lt;1%
+## 14 1526     1520           +37        Pacers  East         41%          17%     6%       &lt;1%
+## 15 1563     1564            +6 Trail Blazers  West          6%           3%     1%       &lt;1%
+## 16 1543     1537           -20       Thunder  West         30%           8%    &lt;1%       &lt;1%
+## 17 1502     1502            -3         Bucks  East         23%           9%     3%       &lt;1%
+## 18 1479     1469           +46         Hawks  East         21%           6%     2%       &lt;1%
+## 19 1482     1480           -41     Grizzlies  West         10%           3%    &lt;1%       &lt;1%
+## 20 1569     1555           +32          Heat  East           —            —      —         —
+## 21 1552     1533           +27       Nuggets  West           —            —      —         —
+## 22 1482     1489           -12      Pelicans  West           —            —      —         —
+## 23 1463     1472           -18  Timberwolves  West           —            —      —         —
+## 24 1463     1462           -40       Hornets  East           —            —      —         —
+## 25 1441     1436           +22       Pistons  East           —            —      —         —
+## 26 1420     1421           -20     Mavericks  West           —            —      —         —
+## 27 1393     1395            -2         Kings  West           —            —      —         —
+## 28 1374     1379           -13        Knicks  East           —            —      —         —
+## 29 1367     1370           +47        Lakers  West           —            —      —         —
+## 30 1372     1370           -14          Nets  East           —            —      —         —
+## 31 1352     1355            -9         Magic  East           —            —      —         —
+## 32 1338     1348           -29         76ers  East           —            —      —         —
+## 33 1340     1337           +26          Suns  West           —            —      —         —</code></pre>
+
+</div>
+</div>
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="heavy-way-httrjsonlite.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "night",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-selenium.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
