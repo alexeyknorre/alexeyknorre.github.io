@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="heavy-way-httrjsonlite.html">
+<link rel="prev" href="hard-way-httrjsonlite.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -112,11 +112,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.2" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#xpath--css-----"><i class="fa fa-check"></i><b>2.2</b> XPath и CSS селекторы: пробиваем путь к данным</a></li>
 <li class="chapter" data-level="2.3" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#rvest"><i class="fa fa-check"></i><b>2.3</b> Rvest</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html"><i class="fa fa-check"></i><b>3</b> Heavy way: httr+jsonlite</a><ul>
-<li class="chapter" data-level="3.1" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#bus.gov.ru-----"><i class="fa fa-check"></i><b>3.1</b> bus.gov.ru и задачка для выгрузки данных</a></li>
-<li class="chapter" data-level="3.2" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#-json"><i class="fa fa-check"></i><b>3.2</b> Отлов JSON’ов</a></li>
-<li class="chapter" data-level="3.3" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#httr---"><i class="fa fa-check"></i><b>3.3</b> httr и отправка запросов</a></li>
-<li class="chapter" data-level="3.4" data-path="heavy-way-httrjsonlite.html"><a href="heavy-way-httrjsonlite.html#--"><i class="fa fa-check"></i><b>3.4</b> Цикл с запросами</a></li>
+<li class="chapter" data-level="3" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html"><i class="fa fa-check"></i><b>3</b> Hard way: httr+jsonlite</a><ul>
+<li class="chapter" data-level="3.1" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#bus.gov.ru-----"><i class="fa fa-check"></i><b>3.1</b> bus.gov.ru и задачка для выгрузки данных</a></li>
+<li class="chapter" data-level="3.2" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#-json"><i class="fa fa-check"></i><b>3.2</b> Отлов JSON’ов</a></li>
+<li class="chapter" data-level="3.3" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#httr---"><i class="fa fa-check"></i><b>3.3</b> httr и отправка запросов</a></li>
+<li class="chapter" data-level="3.4" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#--"><i class="fa fa-check"></i><b>3.4</b> Цикл с запросами</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html"><i class="fa fa-check"></i><b>4</b> Slow way: RSelenium</a><ul>
 <li class="chapter" data-level="4.1" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html#nba-predictions"><i class="fa fa-check"></i><b>4.1</b> 5-38 NBA predictions</a></li>
@@ -150,7 +150,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Нужно выцепить эту табличку: <img src="pics/3_so.png" width="1075" /></p>
 <p>Для этого расчехляем RSelenium. После загрузки библиотек и создания переменной с URL инициализируем сам движок, который будет эмулировать браузер. Для этого нужно выбрать браузер: можно использовать известные Chrome, Firefox и другие, а можно использовать браузерозаменитель phantom.js (это как будто компьютер без монитора).</p>
 <p>Некоторое время Селениум будет подгружать браузерный движок, а потом запустит окошко.</p>
-<p><img src="pics/3_so.png" width="1075" /></p>
+<p><img src="pics/3_firefox.png" width="601" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RSelenium)
 <span class="kw">library</span>(rvest)
 
@@ -193,6 +193,7 @@ df &lt;-<span class="st"> </span><span class="kw">tail</span>(df,<span class="op
 df &lt;-<span class="st"> </span><span class="kw">head</span>(df,<span class="op">-</span><span class="dv">4</span>)
 df &lt;-<span class="st"> </span>df[ , <span class="op">-</span><span class="kw">which</span>(<span class="kw">names</span>(df) <span class="op">==</span><span class="st"> &quot;NA&quot;</span>)]
 df</code></pre></div>
+<p>В итоге мы получаем ту самую таблицу, которая была нам нужна:</p>
 <pre><code>##     ELO Carm-ELO 1-Week Change          Team Conf. Conf. Semis Conf. Finals Finals Win Title
 ## 4  1770     1792           -14      Warriors  West         94%          79%    66%       59%
 ## 5  1661     1660           -43         Spurs  West         90%          62%    15%       11%
@@ -238,7 +239,7 @@ df</code></pre></div>
           </div>
         </div>
       </div>
-<a href="heavy-way-httrjsonlite.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hard-way-httrjsonlite.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

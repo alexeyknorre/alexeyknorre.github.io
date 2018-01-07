@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Web scraping с помощью R</title>
+  <meta name="description" content="Брошюра о том, как выкачивать сайты с помощью R">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Web scraping с помощью R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Брошюра о том, как выкачивать сайты с помощью R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Web scraping с помощью R" />
+  
+  <meta name="twitter:description" content="Брошюра о том, как выкачивать сайты с помощью R" />
+  
+
+<meta name="author" content="Алексей Кнорре">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="easy-way-rvest.html">
+<link rel="next" href="slow-way-rselenium.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Web scraping при помощи R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#-----"><i class="fa fa-check"></i><b>1.1</b> Что это и о чём это?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#web-scraping"><i class="fa fa-check"></i><b>1.2</b> Web scraping?</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#----"><i class="fa fa-check"></i><b>1.3</b> Окей, может приступим к делу?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html"><i class="fa fa-check"></i><b>2</b> Easy way: rvest</a><ul>
+<li class="chapter" data-level="2.1" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#---html"><i class="fa fa-check"></i><b>2.1</b> Структура сайтов и HTML</a></li>
+<li class="chapter" data-level="2.2" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#xpath--css-----"><i class="fa fa-check"></i><b>2.2</b> XPath и CSS селекторы: пробиваем путь к данным</a></li>
+<li class="chapter" data-level="2.3" data-path="easy-way-rvest.html"><a href="easy-way-rvest.html#rvest"><i class="fa fa-check"></i><b>2.3</b> Rvest</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html"><i class="fa fa-check"></i><b>3</b> Hard way: httr+jsonlite</a><ul>
+<li class="chapter" data-level="3.1" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#bus.gov.ru-----"><i class="fa fa-check"></i><b>3.1</b> bus.gov.ru и задачка для выгрузки данных</a></li>
+<li class="chapter" data-level="3.2" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#-json"><i class="fa fa-check"></i><b>3.2</b> Отлов JSON’ов</a></li>
+<li class="chapter" data-level="3.3" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#httr---"><i class="fa fa-check"></i><b>3.3</b> httr и отправка запросов</a></li>
+<li class="chapter" data-level="3.4" data-path="hard-way-httrjsonlite.html"><a href="hard-way-httrjsonlite.html#--"><i class="fa fa-check"></i><b>3.4</b> Цикл с запросами</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html"><i class="fa fa-check"></i><b>4</b> Slow way: RSelenium</a><ul>
+<li class="chapter" data-level="4.1" data-path="slow-way-rselenium.html"><a href="slow-way-rselenium.html#nba-predictions"><i class="fa fa-check"></i><b>4.1</b> 5-38 NBA predictions</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Сделано в bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Web scraping с помощью R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hard-way-httrjsonlite" class="section level1">
+<h1><span class="header-section-number">Часть 3</span> Hard way: httr+jsonlite</h1>
+<p>В последние годы веб-страницы всё реже являются статичными и всё чаще используют AJAX – набор технологий для асинхронной работы с JavaScript и XML, когда мы один раз загружаем страницу в браузер и, например, выбираем какие-нибудь фильтры для отображающихся таблиц. Это удобно для пользователей, потому что не нужно каждый раз перезагружать страницу заново, и удобно для разработчиков, поскольку на сервер приходится меньше нагрузки; кроме того, это позволяет делать прикольные интерактивные штуки с тем, что происходит на странице.<br />
+Однако это создаёт проблему для людей, которые хотят соскрэпить данные с веб-страницы, то есть для нас. Страница в момент первого обращения (то есть когда мы делаем запрос с помощью функции <code>read_html</code> в <code>rvest</code>) не содержит нужных нам данных, они подгружаются чуть позже, когда выполняется скрипт JavaScript. Что же делать?</p>
+<p>Я знаю о двух способах решения этой задачи. Первый заключается в том, чтобы найти вторичные запросы JS-скриптов, которые подгружают данные к нам на страницу, если мы сидим через браузер. Часто это непростая задача, потому что таких скриптов и обращений может быть много, и чтобы их найти нужно покопаться и найти нужное. Такой способ я покажу в этой главе, а про второй расскажу в следующей.</p>
+<p>В качестве примера я возьму портал Федерального казначейства России, посвященный информации о государственных и муниципальных закупках – <a href="http://bus.gov.ru/pub/home">bus.gov.ru</a>.<br />
+Пара моих знакомых занимается исследованиями образования, и они были в ужасе от того, что им придётся вручную копировать больше тысячи записей о рейтингах школ Санкт-Петербурга, которые есть на bus.gov.ru. Когда я узнал об этом, я сказал: “Фигня вопрос, это делается за вечер”. В действительности это заняло примерно в 5 раз больше времени. Про этот опыт и будет пример со скрэпингом веб-страниц с асинхронной загрузкой данных.</p>
+<div id="bus.gov.ru-----" class="section level2">
+<h2><span class="header-section-number">3.1</span> bus.gov.ru и задачка для выгрузки данных</h2>
+<p>Задача звучит так. Есть <a href="http://bus.gov.ru/pub/top-organizations">страница</a>, содержащая учреждения начального и среднего образования Санкт-Петербурга (нужно выбрать кнопку “Образование”, а субъект – “Санкт-Петербург”).</p>
+<p><img src="pics/2_schools_list.png" width="793" /></p>
+<p>При переходе на <a href="http://bus.gov.ru/pub/info-card/262082?activeTab=3&amp;organizationGroup=251">страничку</a> детского сада №41 в Пушкинском районе (первая страница в списке) показывается много всяких интересных данных об этом детском саде. Особенно интересна маленькая незаметная кнопка “Значения показателей” внизу карточку, при нажатии на которую появляются окошко-фрейм с суммами баллов, которые, по какой-то причине, все равны 10 из 10 (это моих знакомых и заинтересовало больше всего).<br />
+Задача: как выгрузить все эти показатели для всех элементов списка в плоскую таблицу для анализа?</p>
+<p>Правильный ответ: разобраться в <a href="http://bus.gov.ru/pub/open-data">открытых данных</a> портала bus.gov.ru, скачать нужные XML и распарсить их. Пример, который будет ниже, дан в дидактических целях: про XML я узнал позднее, а создавать нагрузку на неофициальный API нехорошо.</p>
+</div>
+<div id="-json" class="section level2">
+<h2><span class="header-section-number">3.2</span> Отлов JSON’ов</h2>
+<p>Асинхронная загрузка данных работает следующим образом. Допустим, мы открыли страницу школы, и хотим узнать её показатели. Как только нажимаем на соответствующую ссылку, страница в браузере отправляет запрос на сервер, тот в ответ присылает значения показателей. Если мы узнаем содержание запроса, то сможем отправлять его сами и, соответственно, получать нужные данные. Как это сделать?</p>
+<p>Когда в прошлый раз мы открывали просмотрщик исходного кода, там, помимо вкладки с HTML, были и другие вкладки. Одна из них нам и нужна, она называется “Network” в Chrome. Давайте перейдём на <a href="http://bus.gov.ru/pub/info-card/262082?activeTab=3&amp;organizationGroup=251">страницу</a> детского сада, нажмём F12 и откроем упомянутую вкладку, а уже в ней, рядом между кнопочками “All” и “JS” есть заветная кнопка <strong>“XHR”</strong>, аббревиатура <a href="https://ru.wikipedia.org/wiki/XMLHttpRequest">XMLHttpRequest</a>, того самого способа подгрузки данных в имеющуюся страницу с помощью JavaScript. Выглядит это всё вот так:</p>
+<p><img src="pics/2_school_xhr.png" width="807" /></p>
+<p>Теперь нажмём на ссылку загрузки показателей. И тут пошли запросы:</p>
+<p><img src="pics/2_school_xhr_2.png" width="798" /></p>
+<p>Изучаем каждый из четырёх заголовков и ответных наборов данных. Вот, например, ответ со значениями показателей:</p>
+<p><img src="pics/2_school_xhr_3.png" width="842" /></p>
+<p>Если переключиться там же на вкладку “Headers”, то мы увидим, как составить запрос, чтобы получить информацию по показателям. Только теперь не для одной школы или детского сада, а для всех нужных нам. Сам запрос выглядит примерно так (его можно даже в адресную строку браузера вставить и посмотреть, как выглядит ответный JSON):<br />
+<code>http://bus.gov.ru/public-rating/api/analytics/rateValue?critEntityId=12&amp;criterionCode=1&amp;groupId=251&amp;indRatingId=134349&amp;isOrg=true&amp;pgmu=true&amp;ratingYear=2017&amp;scopesActivity=2&amp;sourceAgencyId=262082</code></p>
+<p>Видим, что в URL передаются разные параметры. Можно поперебирать запрос так, чтобы минимизировать число этих параметров (кажется, что некоторые из них точно не нужны - например, я убрал <code>title</code>), при этом сохраняя ответ сервера.</p>
+</div>
+<div id="httr---" class="section level2">
+<h2><span class="header-section-number">3.3</span> httr и отправка запросов</h2>
+<p>Под капотом <code>rvest</code> трудится библиотечка <code>httr</code>. Когда мы выполняем функцию <code>rvest::read_html(&quot;www.google.com&quot;)</code>, там, внутри R, <code>httr</code> делает POST-запрос к серверу Google, получает ответ, определяет и аккуратно извлекает из него содержимое, передавая затем его библиотеке <code>xml2</code> для синтаксического разбора (под чутким руководством <code>rvest</code>). Здесь, чтобы начать работать с заголовками, нам нужно спуститься на уровень <code>httr</code> и самом посоставлять запросы. Попробуем получить показатели того конкретного детского сада с помощью <code>httr</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(httr)
+bgr_url &lt;-<span class="st"> &#39;http://bus.gov.ru/public-rating/api/analytics/rateValue?critEntityId=12&amp;criterionCode=1&amp;groupId=251&amp;indRatingId=134349&amp;isOrg=true&amp;pgmu=true&amp;ratingYear=2017&amp;scopesActivity=2&amp;sourceAgencyId=262082&#39;</span>
+
+<span class="co"># Делаем запрос по адресу и сохраняем ответ в resp:</span>
+resp &lt;-<span class="st"> </span><span class="kw">GET</span>(bgr_url)
+<span class="kw">str</span>(resp)</code></pre></div>
+<pre><code>## List of 10
+##  $ url        : chr &quot;http://bus.gov.ru/public-rating/api/analytics/rateValue?critEntityId=12&amp;criterionCode=1&amp;groupId=251&amp;indRatingId&quot;| __truncated__
+##  $ status_code: int 200
+##  $ headers    :List of 13
+##   ..$ server           : chr &quot;nginx&quot;
+##   ..$ date             : chr &quot;Sat, 06 Jan 2018 22:01:54 GMT&quot;
+##   ..$ content-type     : chr &quot;application/json&quot;
+##   ..$ transfer-encoding: chr &quot;chunked&quot;
+##   ..$ connection       : chr &quot;keep-alive&quot;
+##   ..$ set-cookie       : chr &quot;gmuind=1; Domain=bus.gov.ru; Path=/&quot;
+##   ..$ content-language : chr &quot;ru-RU&quot;
+##   ..$ set-cookie       : chr &quot;JSESSIONID=0000FRZ0HWO78GZmWrS58r33QQP:19t8nad37; Path=/&quot;
+##   ..$ expires          : chr &quot;Thu, 01 Dec 1994 16:00:00 GMT&quot;
+##   ..$ cache-control    : chr &quot;no-cache=\&quot;set-cookie, set-cookie2\&quot;&quot;
+##   ..$ loc              : chr &quot;indratbackend&quot;
+##   ..$ set-cookie       : chr &quot;stick=!2NR6gjAYwz5t2lAW1/kkDaZKycN1Kd0AsBM9bMtLcBWkOyZbXi2/glq18Z7IPUkNQRGsfVYGUxQEHNE=; path=/&quot;
+##   ..$ set-cookie       : chr &quot;srv=29120;&quot;
+##   ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;insensitive&quot; &quot;list&quot;
+##  $ all_headers:List of 1
+##   ..$ :List of 3
+##   .. ..$ status : int 200
+##   .. ..$ version: chr &quot;HTTP/1.1&quot;
+##   .. ..$ headers:List of 13
+##   .. .. ..$ server           : chr &quot;nginx&quot;
+##   .. .. ..$ date             : chr &quot;Sat, 06 Jan 2018 22:01:54 GMT&quot;
+##   .. .. ..$ content-type     : chr &quot;application/json&quot;
+##   .. .. ..$ transfer-encoding: chr &quot;chunked&quot;
+##   .. .. ..$ connection       : chr &quot;keep-alive&quot;
+##   .. .. ..$ set-cookie       : chr &quot;gmuind=1; Domain=bus.gov.ru; Path=/&quot;
+##   .. .. ..$ content-language : chr &quot;ru-RU&quot;
+##   .. .. ..$ set-cookie       : chr &quot;JSESSIONID=0000FRZ0HWO78GZmWrS58r33QQP:19t8nad37; Path=/&quot;
+##   .. .. ..$ expires          : chr &quot;Thu, 01 Dec 1994 16:00:00 GMT&quot;
+##   .. .. ..$ cache-control    : chr &quot;no-cache=\&quot;set-cookie, set-cookie2\&quot;&quot;
+##   .. .. ..$ loc              : chr &quot;indratbackend&quot;
+##   .. .. ..$ set-cookie       : chr &quot;stick=!2NR6gjAYwz5t2lAW1/kkDaZKycN1Kd0AsBM9bMtLcBWkOyZbXi2/glq18Z7IPUkNQRGsfVYGUxQEHNE=; path=/&quot;
+##   .. .. ..$ set-cookie       : chr &quot;srv=29120;&quot;
+##   .. .. ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;insensitive&quot; &quot;list&quot;
+##  $ cookies    :&#39;data.frame&#39;: 4 obs. of  7 variables:
+##   ..$ domain    : chr [1:4] &quot;.bus.gov.ru&quot; &quot;bus.gov.ru&quot; &quot;bus.gov.ru&quot; &quot;bus.gov.ru&quot;
+##   ..$ flag      : logi [1:4] TRUE FALSE FALSE FALSE
+##   ..$ path      : chr [1:4] &quot;/&quot; &quot;/&quot; &quot;/&quot; &quot;/public-rating/api/analytics/&quot;
+##   ..$ secure    : logi [1:4] FALSE FALSE FALSE FALSE
+##   ..$ expiration: POSIXct[1:4], format: NA NA NA NA
+##   ..$ name      : chr [1:4] &quot;gmuind&quot; &quot;JSESSIONID&quot; &quot;stick&quot; &quot;srv&quot;
+##   ..$ value     : chr [1:4] &quot;1&quot; &quot;0000FRZ0HWO78GZmWrS58r33QQP:19t8nad37&quot; &quot;!2NR6gjAYwz5t2lAW1/kkDaZKycN1Kd0AsBM9bMtLcBWkOyZbXi2/glq18Z7IPUkNQRGsfVYGUxQEHNE=&quot; &quot;29120&quot;
+##  $ content    : raw [1:3332] 7b 22 72 61 ...
+##  $ date       : POSIXct[1:1], format: &quot;2018-01-06 22:01:54&quot;
+##  $ times      : Named num [1:6] 0 0 0.015 0.015 0.202 0.218
+##   ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;redirect&quot; &quot;namelookup&quot; &quot;connect&quot; &quot;pretransfer&quot; ...
+##  $ request    :List of 7
+##   ..$ method    : chr &quot;GET&quot;
+##   ..$ url       : chr &quot;http://bus.gov.ru/public-rating/api/analytics/rateValue?critEntityId=12&amp;criterionCode=1&amp;groupId=251&amp;indRatingId&quot;| __truncated__
+##   ..$ headers   : Named chr &quot;application/json, text/xml, application/xml, */*&quot;
+##   .. ..- attr(*, &quot;names&quot;)= chr &quot;Accept&quot;
+##   ..$ fields    : NULL
+##   ..$ options   :List of 3
+##   .. ..$ useragent: chr &quot;libcurl/7.53.1 r-curl/2.6 httr/1.2.1&quot;
+##   .. ..$ cainfo   : chr &quot;C:/Users/Alexey/Documents/R/win-library/3.4/openssl/cacert.pem&quot;
+##   .. ..$ httpget  : logi TRUE
+##   ..$ auth_token: NULL
+##   ..$ output    : list()
+##   .. ..- attr(*, &quot;class&quot;)= chr [1:2] &quot;write_memory&quot; &quot;write_function&quot;
+##   ..- attr(*, &quot;class&quot;)= chr &quot;request&quot;
+##  $ handle     :Class &#39;curl_handle&#39; &lt;externalptr&gt; 
+##  - attr(*, &quot;class&quot;)= chr &quot;response&quot;</code></pre>
+<p>В <code>resp</code> у нас сохраняется куча информации о проведенном с сервером обмене. Во-первых, мы видим, что обмен произошёл успешно (<code>resp$status_code</code> равен 200), во-вторых, <code>resp$headers$content_type</code> у нас JSON. В-третьих, мы можем взять и положить этот JSON в переменную R, используя замечательную библиотеку <code>jsonlite</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(jsonlite)
+<span class="co"># Попутно указываем кодировку и выбираем единственный элемент списка $rateValues</span>
+df &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(<span class="kw">content</span>(resp, <span class="st">&quot;text&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>))<span class="op">$</span>rateValues
+<span class="kw">str</span>(df)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4 obs. of  3 variables:
+##  $ id       : int  19483014 19461465 19461704 19452342
+##  $ rateValue: num  10 10 10 10
+##  $ rate     :&#39;data.frame&#39;:   4 obs. of  6 variables:
+##   ..$ id                : int  2922 2881 2921 2923
+##   ..$ rateCode          : chr  &quot;0221000004&quot; &quot;0221000002&quot; &quot;0221000003&quot; &quot;0221000005&quot;
+##   ..$ rateName          : chr  &quot;Доступность взаимодействия с получателями образовательных услуг по телефону, по электронной почте, с помощью эл&quot;| __truncated__ &quot;Полнота и актуальность информации об организации, осуществляющей образовательную деятельность (далее -организац&quot;| __truncated__ &quot;Наличие на официальном сайте организации в сети Интернет сведений о педагогических работниках организации&quot; &quot;Доступность сведений о ходе рассмотрения обращений граждан, поступивших в организацию от получателей образовате&quot;| __truncated__
+##   ..$ fromValue         : num  0 0 0 0
+##   ..$ toValue           : num  10 10 10 10
+##   ..$ organizationGroups:List of 4
+##   .. ..$ :&#39;data.frame&#39;:  1 obs. of  6 variables:
+##   .. .. ..$ entityId    : int 251
+##   .. .. ..$ id          : int 1801
+##   .. .. ..$ groupCode   : chr &quot;04200005&quot;
+##   .. .. ..$ groupName   : chr &quot;организации, осуществляющие образовательную деятельность&quot;
+##   .. .. ..$ isGeneral   : logi TRUE
+##   .. .. ..$ entityStatus: chr &quot;P&quot;
+##   .. ..$ :&#39;data.frame&#39;:  1 obs. of  6 variables:
+##   .. .. ..$ entityId    : int 251
+##   .. .. ..$ id          : int 1801
+##   .. .. ..$ groupCode   : chr &quot;04200005&quot;
+##   .. .. ..$ groupName   : chr &quot;организации, осуществляющие образовательную деятельность&quot;
+##   .. .. ..$ isGeneral   : logi TRUE
+##   .. .. ..$ entityStatus: chr &quot;P&quot;
+##   .. ..$ :&#39;data.frame&#39;:  1 obs. of  6 variables:
+##   .. .. ..$ entityId    : int 251
+##   .. .. ..$ id          : int 1801
+##   .. .. ..$ groupCode   : chr &quot;04200005&quot;
+##   .. .. ..$ groupName   : chr &quot;организации, осуществляющие образовательную деятельность&quot;
+##   .. .. ..$ isGeneral   : logi TRUE
+##   .. .. ..$ entityStatus: chr &quot;P&quot;
+##   .. ..$ :&#39;data.frame&#39;:  1 obs. of  6 variables:
+##   .. .. ..$ entityId    : int 251
+##   .. .. ..$ id          : int 1801
+##   .. .. ..$ groupCode   : chr &quot;04200005&quot;
+##   .. .. ..$ groupName   : chr &quot;организации, осуществляющие образовательную деятельность&quot;
+##   .. .. ..$ isGeneral   : logi TRUE
+##   .. .. ..$ entityStatus: chr &quot;P&quot;</code></pre>
+<p>Одна из главных сложностей при работе с JSON – его сложная вложенная структура. Наш JSON теперь как бы датафрейм, с 4 наблюдениями, но из трёх переменных в одной из них ($) есть, в свою очередь, вложенные датафреймы (по одному на каждое наблюдение). В таких случаях нужно детально инспектировать данные и понимать, что нужно оставить, а что можно выкинуть, чтобы сделать датафрейм плоским.<br />
+В нашем случае эта неприглядная конструкция выглядит так:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Отбираем то, что надо</span>
+df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">t</span>(<span class="kw">data.frame</span>(<span class="dt">rate_name =</span> df<span class="op">$</span>rate<span class="op">$</span>rateName, <span class="dt">rate_value =</span> df[,<span class="kw">c</span>(<span class="st">&quot;rateValue&quot;</span>)])), <span class="dt">stringsAsFactors =</span> F)
+<span class="co"># Причесываем переменные и их названия</span>
+<span class="kw">row.names</span>(df) &lt;-<span class="st"> </span><span class="ot">NULL</span>
+<span class="kw">colnames</span>(df) &lt;-<span class="st"> </span>df[<span class="dv">1</span>, ]
+df &lt;-<span class="st"> </span>df[<span class="op">-</span><span class="dv">1</span>, ]  
+<span class="kw">str</span>(df)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    1 obs. of  4 variables:
+##  $ Доступность взаимодействия с получателями образовательных услуг по телефону, по электронной почте, с помощью электронных сервисов, предоставляемых на официальном сайте организации в сети Интернет, в том числе наличие возможности внесения предложений, направленных на улучшение работы организации                                                                                                      : chr &quot;10&quot;
+##  $ Полнота и актуальность информации об организации, осуществляющей образовательную деятельность (далее -организация), и ее деятельности, размещенной на официальном сайте организации в информационно-телекоммуникационной сети «Интернет» (далее - сеть Интернет) (для государственных (муниципальных) организаций - информации, размещенной, в том числе на официальном сайте в сети Интернет www.bus.gov.ru): chr &quot;10&quot;
+##  $ Наличие на официальном сайте организации в сети Интернет сведений о педагогических работниках организации                                                                                                                                                                                                                                                                                                    : chr &quot;10&quot;
+##  $ Доступность сведений о ходе рассмотрения обращений граждан, поступивших в организацию от получателей образовательных услуг (по телефону, по электронной почте, с помощью электронных сервисов, доступных на официальном сайте организации)                                                                                                                                                                   : chr &quot;10&quot;</code></pre>
+<p>В реальности на каждую школу и детсад необходимо было отправлять 6 запросов, но общий принцип тот же. Для того, чтобы это стало настоящим скрэпером, нужно получить список образовательных учреждений, облачить запрос в функцию и запустить цикл.</p>
+</div>
+<div id="--" class="section level2">
+<h2><span class="header-section-number">3.4</span> Цикл с запросами</h2>
+<p>Попробуем теперь получить значения показателей для первых 20 школ и детсадов из списка. Для этого сначала получим сам список этих школ и детсадов тем же методом – отправкой запроса и получением JSON.</p>
+<p>URL для списка имеет такой вид: <code>http://bus.gov.ru/public-rating/api/topOrganizations/tableData?groupId=251&amp;groupIdStr=%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8,+%D0%BE%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B5+%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%83%D1%8E+%D0%B4%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C&amp;orgName=&amp;page=1&amp;pageSize=10&amp;ppoId=21499&amp;ppoIdStr=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&amp;scopeActivity=2</code><br />
+В ней для нас важен параметр <code>page</code> – это страница из всего списка организаций, объём которой составляет 10 организаций. Создадим функцию, которая будет подхватывать список из 10 организаций, но каждый раз новых. Для этого подменим номер страницы переменной <code>page_number</code>, по которой будем проходить циклом. В GET-запрос добавим куки, которые будут автоматически ставить географию – Санкт-Петербург. Из полученного JSON формируем датафрейм с названиями, адресами и идентификаторами организаций:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bus.gov.ru_get_schools_list &lt;-<span class="st"> </span><span class="cf">function</span>(page_number) {
+  
+  path &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+    <span class="st">&quot;http://bus.gov.ru/public-rating/api/topOrganizations/tableData?groupId=251&amp;groupIdStr=%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8,+%D0%BE%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B5+%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%83%D1%8E+%D0%B4%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C&amp;orgName=&amp;page=&quot;</span>,
+    page_number,
+    <span class="st">&quot;&amp;pageSize=10&amp;ppoId=21499&amp;ppoIdStr=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&amp;scopeActivity=2&quot;</span>)
+  
+  <span class="co"># set cookies for region subsetting</span>
+  resp &lt;-<span class="st"> </span><span class="kw">GET</span>(path, <span class="kw">set_cookies</span>(
+    <span class="dt">homeRegionId =</span> <span class="st">&quot;5277347&quot;</span>,
+    <span class="dt">homeRegionFullName=</span><span class="st">&quot;%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&quot;</span>,
+    <span class="dt">homeRegionName=</span><span class="st">&quot;%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&quot;</span>))
+  
+  data &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(<span class="kw">content</span>(resp, <span class="st">&quot;text&quot;</span>))<span class="op">$</span>records
+  
+  <span class="kw">return</span>(<span class="kw">data.frame</span>(<span class="dt">id =</span> data<span class="op">$</span>organization<span class="op">$</span>sourceAgency<span class="op">$</span>id, <span class="dt">name =</span> data<span class="op">$</span>organization<span class="op">$</span>fullName, <span class="dt">address =</span> data<span class="op">$</span>organization<span class="op">$</span>address<span class="op">$</span>fullAddress))
+  
+  
+}
+
+df &lt;-<span class="st"> </span><span class="kw">bus.gov.ru_get_schools_list</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df</code></pre></div>
+<pre><code>##        id                                                                                                                                                                                                         name                                                                                                                 address
+## 1  262082                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 41 ПУШКИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                    196634, САНКТ-ПЕТЕРБУРГ Г, поселок Шушары, КОЛПИНСКОЕ (СЛАВЯНКА) Ш, КОРПУС 3 ЛИТЕР А
+## 2  140730                                                                      ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 92 КОМБИНИРОВАННОГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                       193149, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Народный, ОКТЯБРЬСКАЯ НАБ, 6 ЛИТ.А
+## 3  203305                                                                       ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 1 КОМБИНИРОВАННОГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                          193168, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Невский округ, АНТОНОВА-ОВСЕЕНКО УЛ, ЛИТЕРА &quot;А&quot;
+## 4  172687                                                                  ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ДВОРЕЦ ДЕТСКОГО (ЮНОШЕСКОГО) ТВОРЧЕСТВА КИРОВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                               198216, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Княжево, ЛЕНИНСКИЙ ПР-КТ, КОРПУС 4. ЛИТ. А
+## 5  170494                                                                   ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 57 КОМБИНИРОВАННОГО ВИДА ПРИМОРСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                       197371, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Юнтолово, КОРОЛЕВА ПР-КТ, 2, ЛИТ.А
+## 6  158997 САНКТ-ПЕТЕРБУРГСКОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ДЕТЕЙ СПЕЦИАЛИЗИРОВАННАЯ ДЕТСКО-ЮНОШЕСКАЯ СПОРТИВНАЯ ШКОЛА ОЛИМПИЙСКОГО РЕЗЕРВА № 1 ФРУНЗЕНСКОГО РАЙОНА                                       192007, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Волковское, ЛИГОВСКИЙ ПР-КТ, ЛИТ.А
+## 7  231657                                                          ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД &quot;КУДЕСНИЦА&quot; КОМПЕНСИРУЮЩЕГО ВИДА ПЕТРОГРАДСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                      197022, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Чкаловское, 1-Я БЕРЕЗОВАЯ АЛ, ЛИТ А
+## 8  175965                                                                     ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 116 КОМБИНИРОВАННОГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                         193230, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 54, ИСКРОВСКИЙ ПР-КТ, 2 ЛИТ. А
+## 9  206464                                                                  ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 29 КОМБИНИРОВАННОГО ВИДА ЦЕНТРАЛЬНОГО РАЙОНА САНКТ-ПЕТЕРБУРГА 191167, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Смольнинское, НЕВСКИЙ ПР-КТ, ЛИТЕР А, П.1-Н,2-Н,3-Н,4-Н,5-Н,9-Н,Л3,Л4,Л5
+## 10 181165                                                                       ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 94 КОМПЕНСИРУЮЩЕГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                            193168, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Невский округ, ДЫБЕНКО УЛ, КОРПУС 2, ЛИТЕРА А</code></pre>
+<p>Теперь можно сделать цикл и применять функцию для каждой новой страницы:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>) {
+  <span class="kw">print</span>(i)
+  df &lt;-<span class="st"> </span><span class="kw">rbind</span>(df, <span class="kw">bus.gov.ru_get_schools_list</span>(i))
+  <span class="kw">Sys.sleep</span>(<span class="dv">1</span>)
+}</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre><code>## No encoding supplied: defaulting to UTF-8.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df</code></pre></div>
+<pre><code>##        id                                                                                                                                                                                                                                               name                                                                                                                 address
+## 1  262082                                                                                                                               ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 41 ПУШКИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                    196634, САНКТ-ПЕТЕРБУРГ Г, поселок Шушары, КОЛПИНСКОЕ (СЛАВЯНКА) Ш, КОРПУС 3 ЛИТЕР А
+## 2  140730                                                                                                            ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 92 КОМБИНИРОВАННОГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                       193149, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Народный, ОКТЯБРЬСКАЯ НАБ, 6 ЛИТ.А
+## 3  203305                                                                                                             ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 1 КОМБИНИРОВАННОГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                          193168, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Невский округ, АНТОНОВА-ОВСЕЕНКО УЛ, ЛИТЕРА &quot;А&quot;
+## 4  172687                                                                                                        ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ДВОРЕЦ ДЕТСКОГО (ЮНОШЕСКОГО) ТВОРЧЕСТВА КИРОВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                               198216, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Княжево, ЛЕНИНСКИЙ ПР-КТ, КОРПУС 4. ЛИТ. А
+## 5  170494                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 57 КОМБИНИРОВАННОГО ВИДА ПРИМОРСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                       197371, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Юнтолово, КОРОЛЕВА ПР-КТ, 2, ЛИТ.А
+## 6  158997                                       САНКТ-ПЕТЕРБУРГСКОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ДЕТЕЙ СПЕЦИАЛИЗИРОВАННАЯ ДЕТСКО-ЮНОШЕСКАЯ СПОРТИВНАЯ ШКОЛА ОЛИМПИЙСКОГО РЕЗЕРВА № 1 ФРУНЗЕНСКОГО РАЙОНА                                       192007, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Волковское, ЛИГОВСКИЙ ПР-КТ, ЛИТ.А
+## 7  231657                                                                                                ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД &quot;КУДЕСНИЦА&quot; КОМПЕНСИРУЮЩЕГО ВИДА ПЕТРОГРАДСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                      197022, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Чкаловское, 1-Я БЕРЕЗОВАЯ АЛ, ЛИТ А
+## 8  175965                                                                                                           ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 116 КОМБИНИРОВАННОГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                         193230, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 54, ИСКРОВСКИЙ ПР-КТ, 2 ЛИТ. А
+## 9  206464                                                                                                        ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 29 КОМБИНИРОВАННОГО ВИДА ЦЕНТРАЛЬНОГО РАЙОНА САНКТ-ПЕТЕРБУРГА 191167, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Смольнинское, НЕВСКИЙ ПР-КТ, ЛИТЕР А, П.1-Н,2-Н,3-Н,4-Н,5-Н,9-Н,Л3,Л4,Л5
+## 10 181165                                                                                                             ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 94 КОМПЕНСИРУЮЩЕГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                            193168, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Невский округ, ДЫБЕНКО УЛ, КОРПУС 2, ЛИТЕРА А
+## 11 188153                                                                                                                           ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 15 ПЕТРОДВОРЦОВОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                      198510, САНКТ-ПЕТЕРБУРГ Г, ПЕТЕРГОФ Г, город Петергоф, СУВОРОВСКИЙ ГОРОДОК, ЛИТ. А
+## 12 277057                                                                                                                                  ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 35 НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                    193318, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Правобережный, КОЛЛОНТАЙ УЛ, КОРПУС 2
+## 13 218892                                                                                                                                ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД №16 ПУШКИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                                196608, САНКТ-ПЕТЕРБУРГ Г, ПУШКИН Г, город Пушкин, АХМАТОВСКАЯ УЛ, ЛИТ.А
+## 14 178643                                                                                                          ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 57 КОМБИНИРОВАННОГО ВИДА КИРОВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                               198303, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Красненькая речка, СТАЧЕК ПР-КТ, 3 ЛИТЕР А
+## 15 188838                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 91 КОМБИНИРОВАННОГО ВИДА ВЫБОРГСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                          194291, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 15, ПОЭТИЧЕСКИЙ Б-Р, 1, ЛИТ.А
+## 16 223210                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 12 КОМБИНИРОВАННОГО ВИДА ПУШКИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                               196631, САНКТ-ПЕТЕРБУРГ Г, поселок Александровская, ВОЛХОНСКОЕ Ш, ЛИТЕР А
+## 17 173098   САНКТ-ПЕТЕРБУРГСКОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ДЕТЕЙ СПЕЦИАЛИЗИРОВАННАЯ ДЕТСКО-ЮНОШЕСКАЯ СПОРТИВНАЯ ШКОЛА ОЛИМПИЙСКОГО РЕЗЕРВА КУРОРТНОГО РАЙОНА САНКТ-ПЕТЕРБУРГА ИМ. ВЛАДИМИРА КОРЕНЬКОВА                                  197701, САНКТ-ПЕТЕРБУРГ Г, СЕСТРОРЕЦК Г, город Сестрорецк, КРАСНЫХ КОМАНДИРОВ ПР-КТ, 9
+## 18 151605                                                                                                          ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 50 КОМБИНИРОВАННОГО ВИДА КИРОВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                          198260, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Ульянка, НАРОДНОГО ОПОЛЧЕНИЯ ПР-КТ, 2, ЛИТЕРА А
+## 19 208639                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 17 КОМБИНИРОВАННОГО ВИДА КОЛПИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                               196655, САНКТ-ПЕТЕРБУРГ Г, КОЛПИНО Г, город Колпино, ТВЕРСКАЯ УЛ, 2, ЛИТА
+## 20 229516                                                                                                            ГОСУДАРСТВЕННОЕ  БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 5 КОМБИНИРОВАННОГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                               193232, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 54, БОЛЬШЕВИКОВ ПР-КТ, КОРПУС 2, ЛИТЕР А
+## 21 161040                                                                                                             ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 10 КОМПЕНСИРУЮЩЕГО ВИДА НЕВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                             192029, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Невская застава, ЕЛИЗАРОВА ПР-КТ, 2, ЛИТЕР А
+## 22 213194                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД №101 КОМПЕНСИРУЮЩЕГО ВИДА ФРУНЗЕНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                  192281, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Георгиевский, КУПЧИНСКАЯ УЛ, 3, ЛИТЕР А
+## 23 217263                                                                     ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД  № 41 КОМБИНИРОВАННОГО ВИДА ЦЕНТРАЛЬНОГО РАЙОНА САНКТ-ПЕТЕРБУРГА &quot;ЦЕНТР ИНТЕГРАТИВНОГО ВОСПИТАНИЯ&quot;                                    191028, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Литейный округ, ФУРШТАТСКАЯ УЛ, ЛИТ.А
+## 24 176208 САНКТ-ПЕТЕРБУРГСКОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ДЕТЕЙ СПЕЦИАЛИЗИРОВАННАЯ ДЕТСКО-ЮНОШЕСКАЯ СПОРТИВНАЯ ШКОЛА ОЛИМПИЙСКОГО РЕЗЕРВА &quot;ШКОЛА ВЫСШЕГО СПОРТИВНОГО МАСТЕРСТВА ПО ВОДНЫМ ВИДАМ СПОРТА&quot;                                197022, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Аптекарский остров, РЕКИ КАРПОВКИ НАБ, 19
+## 25 186557                                                                                                                               ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 62 ПРИМОРСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                197227, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Озеро Долгое, ГАККЕЛЕВСКАЯ УЛ, 2 ЛИТЕРА А
+## 26 194106                                                                                           ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 10 ПРИСМОТРА И ОЗДОРОВЛЕНИЯ МОСКОВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА &quot;БОГАТЫРЬ&quot;                              196191, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Новоизмайловское, ЛЕНИНСКИЙ ПР-КТ, 3, ЛИТ.А
+## 27 203018                                                                                                        ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 121 КОМБИНИРОВАННОГО ВИДА ВЫБОРГСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                     194355, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Шувалово-Озерки, ЖЕНИ ЕГОРОВОЙ УЛ, КОРПУС 2 ЛИТЕРА А
+## 28 135951                                                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБЩЕОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ГИМНАЗИЯ № 61 ВЫБОРГСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                       194295, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 15, ХУДОЖНИКОВ ПР-КТ, 3, ЛИТЕР А
+## 29 186212                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 5 КОМБИНИРОВАННОГО ВИДА КАЛИНИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                          195256, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Гражданка, НАУКИ ПР-КТ, 2 ЛИТ.А
+## 30 217989                                                                                                    ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД №  64 КОМБИНИРОВАННОГО ВИДА КРАСНОСЕЛЬСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                    198330, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Юго-Запад, ЛЕНИНСКИЙ ПР-КТ, 3 ЛИТЕР А
+## 31 217922                                                                                                                                ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 1 ПУШКИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                                   196602, САНКТ-ПЕТЕРБУРГ Г, ПУШКИН Г, город Пушкин, ПАРКОВАЯ УЛ, ЛИТ.А
+## 32 233885                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 52 КОМПЕНСИРУЮЩЕГО ВИДА КАЛИНИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                       195299, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 21, ГРАЖДАНСКИЙ ПР-КТ, 4 ЛИТЕР А
+## 33 190231                            САНКТ-ПЕТЕРБУРГСКОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ДЕТЕЙ &quot;СПЕЦИАЛИЗИРОВАННАЯ ДЕТСКО-ЮНОШЕСКАЯ ШКОЛА ОЛИМПИЙСКОГО РЕЗЕРВА &quot;ЦЕНТР ХУДОЖЕСТВЕННОЙ ГИМНАСТИКИ &quot;ЖЕМЧУЖИНА&quot;                              197110, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ округ Петровский, ПЕТРОВСКИЙ ПР-КТ, ЛИТЕР А
+## 34 138755                                                                                                        ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 113 КОМБИНИРОВАННОГО ВИДА ВЫБОРГСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                                  194362, САНКТ-ПЕТЕРБУРГ Г, поселок Парголово, ВЫБОРГСКОЕ Ш, 4, ЛИТЕР А
+## 35 156888                                                                                                                              ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ НЕТИПОВОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ &quot;САНКТ-ПЕТЕРБУРГСКИЙ ГОРОДСКОЙ ДВОРЕЦ ТВОРЧЕСТВА ЮНЫХ&quot;                                             191023, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 78, НЕВСКИЙ ПР-КТ, ЛИТЕР А
+## 36 173431                                                                                                                                         ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ОБЩЕОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ГИМНАЗИЯ №116 ПРИМОРСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                              197342, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Черная речка, НОВОСИБИРСКАЯ УЛ, 2 ЛИТ.А, 16
+## 37 187637                                                                          ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ ДОПОЛНИТЕЛЬНОГО ОБРАЗОВАНИЯ ЦЕНТР ЭСТЕТИЧЕСКОГО ВОСПИТАНИЯ ДЕТЕЙ И МОЛОДЕЖИ КАЛИНИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА &quot;ЦЕНТР НА БРЯНЦЕВА&quot;                                             195297, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Прометей, БРЯНЦЕВА УЛ, ЛИТ.А
+## 38 136122                                                                                                                                ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 8 ПУШКИНСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                    196602, САНКТ-ПЕТЕРБУРГ Г, ПУШКИН Г, город Пушкин, ГУСАРСКАЯ УЛ, КОРПУС 11, ЛИТЕР  А
+## 39 188681                                                                                                    ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД № 6 КОМБИНИРОВАННОГО ВИДА ВАСИЛЕОСТРОВСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА                                             199034, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ № 7, 8-Я В.О. ЛИНИЯ, ЛИТЕР А
+## 40 189231                           ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ ДОШКОЛЬНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ДЕТСКИЙ САД ОБЩЕРАЗВИВАЮЩЕГО ВИДА № 104 С ПРИОРИТЕТНЫМ ОСУЩЕСТВЛЕНИЕМ ДЕЯТЕЛЬНОСТИ ПО ФИЗИЧЕСКОМУ РАЗВИТИЮ ДЕТЕЙ АДМИРАЛТЕЙСКОГО РАЙОНА САНКТ-ПЕТЕРБУРГА            190005, САНКТ-ПЕТЕРБУРГ Г, муниципальный округ Измайловское, ИЗМАЙЛОВСКИЙ ПР-КТ, ЛИТЕР  А, ПОМЕЩЕНИЕ  1Н, 3Н</code></pre>
+<p>Вуаля, у нас есть список из первых 40 организаций. Теперь достаточно сделать еще один цикл, который для каждой организации будет делать запрос, форматировать ответ и добавлять его в имеющийся датафрейм.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="easy-way-rvest.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="slow-way-rselenium.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "night",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-dynamic.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-# Heavy way: httr+jsonlite
+# Hard way: httr+jsonlite
 
 
 
