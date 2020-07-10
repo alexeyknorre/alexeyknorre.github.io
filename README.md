@@ -1,4 +1,0 @@
-alexeyknorre.ru
-============
-
-Jekyll - вещь!
