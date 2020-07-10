@@ -1,47 +1,47 @@
-<?xml-stylesheet type="text/xsl" href="alexknorre.com/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>alexknorre.com/publications/</loc>
+    <loc>/publications/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>alexknorre.com/data/</loc>
+    <loc>/data/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>alexknorre.com/</loc>
+    <loc>/</loc>
     <lastmod>2017-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>alexknorre.com/blog/</loc>
+    <loc>/blog/</loc>
     <lastmod>2017-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>alexknorre.com/blog/so-i-am-a-blogger/</loc>
+    <loc>/blog/so-i-am-a-blogger/</loc>
     <lastmod>2017-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>alexknorre.com/categories/</loc>
+    <loc>/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>alexknorre.com/tags/</loc>
+    <loc>/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

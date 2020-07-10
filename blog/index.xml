@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on alexknorre.com</title>
-    <link>alexknorre.com/blog/</link>
+    <link>/blog/</link>
     <description>Recent content in Blogs on alexknorre.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="alexknorre.com/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>So I am a blogger</title>
-      <link>alexknorre.com/blog/so-i-am-a-blogger/</link>
+      <link>/blog/so-i-am-a-blogger/</link>
       <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>alexknorre.com/blog/so-i-am-a-blogger/</guid>
+      <guid>/blog/so-i-am-a-blogger/</guid>
       <description>This is a test of a blog.</description>
     </item>
     

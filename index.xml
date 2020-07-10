@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>alexknorre.com</title>
-    <link>alexknorre.com/</link>
+    <link>/</link>
     <description>Recent content on alexknorre.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="alexknorre.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Publications</title>
-      <link>alexknorre.com/publications/</link>
+      <link>/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>alexknorre.com/publications/</guid>
+      <guid>/publications/</guid>
       <description>English Articles Knorre, A. (2020). Do Russian Police Fabricate Drug Offenses? Evidence From Seized Heroin’s Weight Distribution. Journal of Drug Issues. https://doi.org/10.1177/0022042620918951
 Russian Articles Verkeev A. M., Volkov V. V., Dzmitryieva A. V., Knorre A. V., Kudryavtsev V. E., Kuznetsova D. A., Kuchakov R. K., Titaev K. D., Khodzhaeva E. A. (2019). How to study victims of crime? [Как изучать жертв преступлений?] Monitoring of Public Opinion: Economic and Social Changes. PDF</description>
     </item>
     
     <item>
       <title>Data</title>
-      <link>alexknorre.com/data/</link>
+      <link>/data/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>alexknorre.com/data/</guid>
+      <guid>/data/</guid>
       <description>I prepared and maintain following datasets:
   Russian Crime Victimization Survey, 2018. [Dataverse]
   Homicide rates in Russian cities, 2020. [Data and guide in Russian on Github]
@@ -35,10 +35,10 @@ Russian Articles Verkeev A. M., Volkov V. V., Dzmitryieva A. V., Knorre A. V., K
     
     <item>
       <title>So I am a blogger</title>
-      <link>alexknorre.com/blog/so-i-am-a-blogger/</link>
+      <link>/blog/so-i-am-a-blogger/</link>
       <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>alexknorre.com/blog/so-i-am-a-blogger/</guid>
+      <guid>/blog/so-i-am-a-blogger/</guid>
       <description>This is a test of a blog.</description>
     </item>
     
