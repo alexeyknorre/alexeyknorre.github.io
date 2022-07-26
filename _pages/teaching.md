@@ -1,12 +1,14 @@
 ---
 layout: page
 permalink: /teaching/
-title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+title: Teaching
+description: 
 nav: true
-nav_order: 5
+nav_order: 4
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+### Penn Data Driven Discovery Initiative (June 2022)
 
-Organize your courses by years, topics, or universities, however you like!
+Introduction to R [Google Collab](https://colab.research.google.com/drive/1_1at2UiOs5TB7yLF_BHESSj0F1VFsQ-G)
+
+Geo Data and Maps in R [HTML](../presentations/geodata-with-R-30jun2022.html)
