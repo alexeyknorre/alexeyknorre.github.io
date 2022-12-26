@@ -11,19 +11,19 @@ nav_order: 3
 
 ### Journal Publications 
 
+del Pozo B., **Knorre A.**, Mello M., Chalfin A. Comparing Risks of Firearm-Related Death and Injury Among Young Adult Males in Selected US Cities With Wartime Service in Iraq and Afghanistan. JAMA Network Open. 2022;5(12):e2248132. [https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2799859](https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2799859)
+
 Knorre A. (2020) "Do Russian Police Fabricate Drug Offenses? Evidence From Seized Heroin's Weight Distribution." Journal of Drug Issues, Vol 50, Issue 4, 2020, [https://doi.org/10.1177/0022042620918951](https://doi.org/10.1177/0022042620918951)
 
 ### Under Review
-"Safer at War: Comparing Risks of Firearm-Related Death and Injury Among Young Adult Males in U.S. Cities to Wartime Service in Iraq and Afghanistan” (with Brandon del Pozo, Aaron Chalfin, and Michael Mello)
+"Shootings and Land Use" (with John MacDonald)
 
 "Cost of Crime in Russia: a Compensating Variation Approach" (with Ruslan Kuchakov, Dmitry Skougarevskiy, and Leonid Zhizhin) 
 
 "Crime and Criminal Justice in Russia in 2000-2020: an Overview" (with Vladimir Kudryavtsev, Ekaterina Khodzhaeva, Kseniia Runova, and Kirill Titaev)
 
 ### Working Papers
-"Hydra: A Quantitative Overview of the World's Largest Darknet Market" (with Priyanka Goonetilleke and Artem Kuriksha). Preprint at SSRN, [http://dx.doi.org/10.2139/ssrn.4161975](http://dx.doi.org/10.2139/ssrn.4161975)
-
-"Shootings and Land Use" (with John MacDonald)
+"Hydra: Lessons from the World’s Largest Darknet Market" (with Priyanka Goonetilleke and Artem Kuriksha). Preprint at SSRN, [http://dx.doi.org/10.2139/ssrn.4161975](http://dx.doi.org/10.2139/ssrn.4161975)
 
 "Enduring Effect of Shooting Victimization" (with John MacDonald)
 
