@@ -16,6 +16,8 @@ del Pozo B., **Knorre A.**, Mello M., Chalfin A. Comparing Risks of Firearm-Rela
 Knorre A. (2020) "Do Russian Police Fabricate Drug Offenses? Evidence From Seized Heroin's Weight Distribution." Journal of Drug Issues, Vol 50, Issue 4, 2020, [https://doi.org/10.1177/0022042620918951](https://doi.org/10.1177/0022042620918951)
 
 ### Under Review
+"Hydra: Lessons from the World’s Largest Darknet Market" (with Priyanka Goonetilleke and Artem Kuriksha). Preprint at SSRN, [http://dx.doi.org/10.2139/ssrn.4161975](http://dx.doi.org/10.2139/ssrn.4161975)
+
 "Shootings and Land Use" (with John MacDonald)
 
 "Cost of Crime in Russia: a Compensating Variation Approach" (with Ruslan Kuchakov, Dmitry Skougarevskiy, and Leonid Zhizhin) 
@@ -23,8 +25,6 @@ Knorre A. (2020) "Do Russian Police Fabricate Drug Offenses? Evidence From Seize
 "Crime and Criminal Justice in Russia in 2000-2020: an Overview" (with Vladimir Kudryavtsev, Ekaterina Khodzhaeva, Kseniia Runova, and Kirill Titaev)
 
 ### Working Papers
-"Hydra: Lessons from the World’s Largest Darknet Market" (with Priyanka Goonetilleke and Artem Kuriksha). Preprint at SSRN, [http://dx.doi.org/10.2139/ssrn.4161975](http://dx.doi.org/10.2139/ssrn.4161975)
-
 "Enduring Effect of Shooting Victimization" (with John MacDonald)
 
 "When Do Shootings Happen? An Analysis of Time Cyclicity"
