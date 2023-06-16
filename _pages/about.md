@@ -15,6 +15,6 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am a PhD candidate of Criminology at [the University of Pennsylvania](https://crim.sas.upenn.edu), where I also obtained my M.A. in Statistics.
+I am a Postdoctoral Research Fellow at the Department of Computer Science in Boston College. I use statistics to study crime, gun violence, homicide, drugs, and victimization. I got my PhD in Criminology at [the University of Pennsylvania](https://crim.sas.upenn.edu), where I also obtained my M.A. in Statistics.
 
-I study gun violence and shooting victimization in the United States. I am also interested in victimization surveys, illegal drugs, and post-soviet criminal justice. I am a big fan of R and frequently use it in my work.
+
